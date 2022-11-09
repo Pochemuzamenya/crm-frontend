@@ -1,57 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { useSelector } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom'
+import { Route, Routes } from "react-router-dom";
+import HomePage from './pages/HomePage';
+import LoginForm from './pages/LoginPage';
+import Navbar from './components/Navbar'
+import AddClient from './pages/AddClient';
+import GisDataPage from './pages/GisDataPage';
 
 function App() {
+
+  const isAuth = useSelector(state => state.user.currentUser.isAuth)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path={"/"} element=<LoginForm /> />
+          <Route path={"/home"} element={isAuth ? <HomePage /> : <LoginForm />} />
+          <Route path={"/add"} element={isAuth ? <AddClient /> : <LoginForm />} />
+          <Route path={"/2gis"} element={isAuth ? <GisDataPage /> : <LoginForm />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
