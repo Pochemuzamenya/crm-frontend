@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { setCurrentUser } from '../redux/slice/currentUserSlice'
 import { useNavigate } from 'react-router-dom'
 import LoginSharpIcon from '@mui/icons-material/LoginSharp';
+import Alert from '@mui/material/Alert';
 
 function LoginForm() {
 
@@ -27,7 +28,8 @@ function LoginForm() {
         dispatch(setCurrentUser(res))
         navigation('/home')
       } catch (error) {
-        console.error('rejected', error);
+        <Alert severity='error'>Сервер недоступен</Alert>
+        console.log(error.error)
       }
       setPassword('')
       setUsername('')
@@ -50,7 +52,7 @@ function LoginForm() {
         </Typography>
         <TextField label='Username' variant='outlined' onChange={(e) => setUsername(e.target.value)} value={username} />
         <TextField label='Password' variant='outlined' type='password' onChange={(e) => setPassword(e.target.value)} value={password} />
-        <Button type="submit" variant='contained'>Войти</Button>
+        <Button type="submit" variant='contained'>Вход</Button>
       </Box>
     </Container>
   )
