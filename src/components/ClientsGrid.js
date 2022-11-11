@@ -4,7 +4,8 @@ import {
     Box, Slide, Dialog,
     AppBar, Toolbar, IconButton,
     Typography, Button,
-    Stack
+    Stack,
+    Grid, Container
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useGetClientsQuery } from '../redux/api/clientsApi'
@@ -86,17 +87,21 @@ function ClientsGrid() {
                         </Button>
                     </Toolbar>
                 </AppBar>
-                <Stack direction="row">
-                    <ClientCard client={client } />
-                    <Box sx={{
-                        flexGrow: 1,
-                        marginLeft: '10px',
-                    }}>
-                        <TicketGrid client={client} /><Box>
-                        <AddTicket client={client}/>
-                    </Box>
-                    </Box>
-                </Stack>
+                <Grid marginTop='20px' container spacing={2}>
+                    <Grid container xs={3}>
+                        <Container>
+                            <ClientCard client={client} />
+                        </Container>
+                    </Grid>
+                    <Grid container xs={9}>
+                        <Container>
+                            <TicketGrid client={client} />
+                        </Container>
+                        <Container>
+                            <AddTicket client={client} />
+                        </Container>
+                    </Grid>
+                </Grid>
             </Dialog>
         </Box>
     )

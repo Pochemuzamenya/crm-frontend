@@ -24,22 +24,21 @@ function AddTicket({ client }) {
         try {
             await addTicket(submitData).unwrap()
         } catch (error) {
-            <Alert severity='error'>`rejected with ${error}`</Alert>
+            console.log(error.error)
         }
     }
 
     return (
         <Container sx={{
-            '& .MuiTextField-root': { m: 2, width: '40ch', minWidth: 120 },
-            '& .MuiSelect-select': { minWidth: 100 }
+            '& .MuiTextField-root': { mr: 1, mt:1, minWidth: 120 },
+            '& .MuiSelect-select': { p:1, minWidth: 100 }
         }}>
-            <Typography variant='h4' textAlign='center'>
+            <Typography variant='h5'>
                 Добавить тикет
             </Typography>
             <Stack spacing={2}
-                direction="row"
-                justifyContent="center"
-                alignItems="center">
+                direction="column"
+                >
                 <Box component='form' onSubmit={handleSubmit(handleAddTicket)}>
                     <TextField label='Результаты контакта' onChange={(e) => setContactResult(e.target.value)} value={contactResult} />
                     <TextField label='Суть контакта' onChange={(e) => setEssenceOfContact(e.target.value)} value={essenceOfContact} />
