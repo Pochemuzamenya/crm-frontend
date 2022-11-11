@@ -16,7 +16,7 @@ export const clientsApi = createApi({
     }),
     endpoints: (build) => ({
         getClients: build.query({
-            query: () => `api/client`,
+            query: () => `/clients`,
             providesTags: (result) => result
                 ? [
                     ...result.map(({ id }) => ({ type: 'Client', id })),
