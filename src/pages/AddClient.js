@@ -1,4 +1,4 @@
-import { Container, Box, TextField, Button, Alert, Typography } from '@mui/material'
+import { Container, Box, TextField, Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form'
@@ -38,12 +38,9 @@ function AddClient() {
             await addClient(submitData).unwrap()
             navigate('/home')
         } catch (error) {
-            <Alert severity="error">`rejected with ${error}`</Alert>
+            console.log(`rejected with ${error}`) 
         }
     }
-
-
-
 
     return (
         <Container sx={{
@@ -81,8 +78,8 @@ function AddClient() {
                         <TextField label='Регион' variant="filled" onChange={(e) => setRegion(e.target.value)} value={region} />
 
 
-                        <TextField label='Город' variant="filled" onChange={(e) => setClientAddress(e.target.value)} value={clientAddress} />
-                        <TextField label='Адрес' variant="filled" onChange={(e) => setCity(e.target.value)} value={city} />
+                        <TextField label='Адрес' variant="filled" onChange={(e) => setClientAddress(e.target.value)} value={clientAddress} />
+                        <TextField label='Город' variant="filled" onChange={(e) => setCity(e.target.value)} value={city} />
 
 
                         <TextField label='Комментарий' variant="filled" onChange={(e) => setComment(e.target.value)} value={comment} />

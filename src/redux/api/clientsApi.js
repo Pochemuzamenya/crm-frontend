@@ -16,7 +16,7 @@ export const clientsApi = createApi({
     }),
     endpoints: (build) => ({
         getClients: build.query({
-            query: () => `/clients`,
+            query: () => `api/client`,
             providesTags: (result) => result
                 ? [
                     ...result.map(({ id }) => ({ type: 'Client', id })),
@@ -36,7 +36,8 @@ export const clientsApi = createApi({
                 url: `api/client`,
                 method: 'PUT',
                 body,
-            })
+            }),
+            invalidatesTags: [{type: 'Client', id: 'LIST'}]
         }),
         deleteClient: build.mutation({
             query: (id) => ({
