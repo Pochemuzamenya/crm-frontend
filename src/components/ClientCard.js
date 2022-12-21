@@ -150,9 +150,7 @@ function ClientCard({ client }) {
                 </Button>
                 {isSuccess ? <Alert variant="filled" severity="success">
                     This is a success alert — check it out!
-                </Alert> : <Alert variant="filled" severity="error">
-                    This is an error alert — check it out!
-                </Alert>}
+                </Alert> : <></>}
             </Dialog>
 
         </Box>
