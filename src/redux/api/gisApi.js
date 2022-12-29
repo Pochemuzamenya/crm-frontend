@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const url = 'https://catalog.api.2gis.com/3.0/'
-const key = 'rusemm4098'
+const key = 'apikey'
 
 export const gisApi = createApi({
     reducerPath: 'gisApi',
